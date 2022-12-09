@@ -1,3 +1,10 @@
+const rockBtn = document.querySelector('#rock')
+const paperBtn = document.querySelector('#paper')
+const scissorsBtn = document.querySelector('#scissors')
+
+let playerScore = 0
+let computerScore = 0
+
 const toCapitalCase = word => word.charAt(0).toUpperCase() + word.slice(1)
 
 const getComputerChoice = () => {
@@ -5,27 +12,34 @@ const getComputerChoice = () => {
   return choices[Math.floor(Math.random() * 3)]
 }
 
-const playRound = (playerSelection, computerSelection) => {
-  playerSelection = playerSelection.toLowerCase()
+const playRound = e => {
+  playerSelection = e.target.id
+  const computerSelection = getComputerChoice()
+
+  console.log(`Player: ${playerSelection}`)
+  console.log(`Computer: ${computerSelection}`)
 
   if (playerSelection === computerSelection) {
-    return 'Tie'
+    return
   } else if ((playerSelection === 'rock' && computerSelection === 'scissors') ||
             (playerSelection === 'scissors' && computerSelection === 'paper') ||
             (playerSelection === 'paper' && computerSelection === 'rock')) {
-    return 'You won! Rock beat Scissors'
+    playerScore++
+    if (playerScore >= 5) {
+      console.log('You Won')
+    }
   } else {
-    return `You lose! ${toCapitalCase(playerSelection)} beated by ${toCapitalCase(computerSelection)} `
+    computerScore++
+    if (computerScore >= 5) {
+      console.log('You Lose')
+    }
   }
 }
 
 const main = () => {
-  for (let i = 0; i < 5; i++) {
-    const playerSelection = prompt('Rock, paper or scissors?')
-    const computerSelection = getComputerChoice()
-
-    console.log(playRound(playerSelection, computerSelection))
-  }
+  rockBtn.addEventListener('click', e => playRound(e))
+  paperBtn.addEventListener('click', e => playRound(e))
+  scissorsBtn.addEventListener('click', e => playRound(e))
 }
 
 main()
