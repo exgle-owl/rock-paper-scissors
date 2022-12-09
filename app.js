@@ -17,6 +17,17 @@ const playRound = (playerSelection, computerSelection) => {
   } else if (playerSelection === 'paper' && computerSelection === 'rock') {
     return 'You won! Paper beat Rock'
   } else {
-    return `You lose! ${toCapitalCase(computerSelection)} beat ${toCapitalCase(playerSelection)}`
+    return `You lose! ${toCapitalCase(playerSelection)} beated by ${toCapitalCase(computerSelection)} `
   }
 }
+
+const main = () => {
+  for (let i = 0; i < 5; i++) {
+    const playerSelection = prompt('Rock, paper or scissors?')
+    const computerSelection = getComputerChoice()
+
+    console.log(playRound(playerSelection, computerSelection))
+  }
+}
+
+main()
