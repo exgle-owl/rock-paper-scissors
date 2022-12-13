@@ -1,0 +1,28 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+
+body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+main .score {
+  display: flex;
+  justify-content: space-around;
+}
+
+main .score span {
+  padding: 10px;
+}
+
+main .log {
+  /* text-align: center; */
+  margin: 20px;
+  min-height: 1rem;
+}
