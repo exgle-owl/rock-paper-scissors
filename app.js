@@ -48,6 +48,7 @@ const playRound = e => {
       btnsSection.innerHTML = `
         <button id="play-again">Play Again!</button>
       `
+      const playAgainBtn = document.querySelector('#play-again')
       playAgainBtn.addEventListener('click', () => location.reload())
     }
   }
